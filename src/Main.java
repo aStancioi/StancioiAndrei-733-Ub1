@@ -10,5 +10,11 @@ public class Main {
         System.out.println("Start here: ");
 
         OffertenController offertenController = new OffertenController(new OffertenFileRepository(new OffertenRepository(new ArrayList<Offerten>())));
+
+        offertenController.sortLines();
+
+        offertenController.statistik();
+
+        System.out.println("End here;");
     }
 }

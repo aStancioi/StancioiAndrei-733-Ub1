@@ -12,7 +12,13 @@ public class MyFileWriter {
     public String convertToCSV(String[] data) {
         return Stream.of(data)
                 .map(this::avoidSpecialCharacters)
-                .collect(Collectors.joining("%"));
+                .collect(Collectors.joining("&"));
+    }
+
+    public String convertToStatistic(String[] data) {
+        return Stream.of(data)
+                .map(this::avoidSpecialCharacters)
+                .collect(Collectors.joining(" "));
     }
 
     public String avoidSpecialCharacters(String data) {
@@ -28,6 +34,16 @@ public class MyFileWriter {
         File csvOutputFile = new File(filepath);
         try (PrintWriter pw = new PrintWriter(csvOutputFile)) {
             strings.stream().map(this::convertToCSV).forEach(pw::println);
+        }
+        catch(FileNotFoundException e){
+            e.printStackTrace();
+        }
+    }
+
+    public void writeToStatistic(List<String[]> strings, String filepath) throws FileNotFoundException {
+        File csvOutputFile = new File(filepath);
+        try (PrintWriter pw = new PrintWriter(csvOutputFile)) {
+            strings.stream().map(this::convertToStatistic).forEach(pw::println);
         }
         catch(FileNotFoundException e){
             e.printStackTrace();

@@ -1,7 +1,7 @@
 package Model;
 
 public enum Ort {
-    Thurgau("Thurgau"), Zurich("Zurich"), StGallen("St. Gallen");
+    Thurgau("Thurgau"), Zürich("Zürich"), StGallen("St. Gallen");
 
     String notation;
 

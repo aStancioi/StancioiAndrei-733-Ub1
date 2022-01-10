@@ -31,10 +31,14 @@ public class OffertenFileRepository {
     public OffertenFileRepository(OffertenRepository current) {
         try {
             offertenRepository = current;
-            List<String> questionLines = Files.readAllLines(Paths.get("F:/tiere.txt"));
+            List<String> questionLines = Files.readAllLines(Paths.get("F:/JavaProjects/Stancioi_Andrei_PP_Ub1/src/offerten.txt"));
             String[] lineList;
             for (String line : questionLines) {
                 lineList = line.split("\\&");
+
+                if(lineList[5].equals("St. Gallen")){
+                    lineList[5] = "StGallen";
+                }
 
                 //id, unternehmen, preis, mehrwertst, addresse, ort
                 Offerten temp = new Offerten(Integer.parseInt(lineList[0]),lineList[1], Long.parseLong(lineList[2]), Double.valueOf(lineList[3]),lineList[4], Ort.valueOf(lineList[5]));
